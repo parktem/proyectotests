@@ -2,6 +2,7 @@ package fp;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
@@ -19,7 +20,14 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw  new NotImplementedException();
+		int a = 0, b = 1;
+		List <Integer> lista= new ArrayList<Integer>();
+		for (int i = 0; i < n; i++) {
+			lista.add(a + b);
+			b = a;
+			a = lista.get(i);
+		}
+		return lista;
 	}
 
 	/*
