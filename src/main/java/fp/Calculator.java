@@ -98,73 +98,31 @@ public class Calculator {
 	 */
 	public static String speakToMe(int n) {
 		String numero = "";
-		if (n == 0) {
-			return "Cero";
-		}
-		if (n > 9) {
-			if (n % 10 == 0) {
-				if (n % 10 == 0) {
-					numero += "Diez";
-				}
-				if (n % 20 == 0) {
-					numero += "Veinte";
-				}
-				if (n % 30 == 0) {
-					numero += "Treinta";
-				}
-				if (n % 40 == 0) {
-					numero += "Cuarenta";
-				}
-				if (n % 50 == 0) {
-					numero += "Cincuenta";
-				}
-				if (n % 60 == 0) {
-					numero += "Sesenta";
-				}
-				if (n % 70 == 0) {
-					numero += "Setenta";
-				}
-				if (n % 80 == 0) {
-					numero += "Ochenta";
-				}
-				if (n % 90 == 0) {
-					numero += "Noventa";
-				}
+		String[] unidades = { "Cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "Diez",
+				"Once", "Doce", "Trece", "Catorce", "Quince", "Diecesies", "Diecisiete", "Dicieocho", "Dicienueve" };
+		String[] decenas = { "Cero", "Diez", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta",
+				"Ochenta", "Noventa" };
+		if (n < 100) {
+			if (n >= 20) {
+				numero = decimalCompleto(n, numero, unidades, decenas);
+			} else {
+				numero += unidades[n];
 			}
+			System.out.println(numero);
 		}
-		n /= 10;
-
-		if (n / 10 == 1) {
-			numero += " y uno";
-		}
-
-		if (n / 10 == 1) {
-			numero += " y dos";
-		}
-		if (n / 10 == 1) {
-			numero += " y tres";
-		}
-		if (n / 10 == 1) {
-			numero += " y cuatro";
-		}
-		if (n / 10 == 1) {
-			numero += " y cinco";
-		}
-		if (n / 10 == 1) {
-			numero += " y seis";
-		}
-		if (n / 10 == 1) {
-			numero += " y siete";
-		}
-		if (n / 10 == 1) {
-			numero += " y ocho";
-		}
-		if (n / 10 == 1) {
-			numero += " y nueve";
-		}
-
 		return numero;
+	}
 
+	private static String decimalCompleto(int n, String numero, String[] unidades, String[] decenas) {
+		if ((n % 10) != 0) {
+			numero += decenas[(n / 10)];
+			numero += " y ";
+			numero += unidades[(n % 10)];
+
+		} else {
+			numero += decenas[(n / 10)];
+		}
+		return numero;
 	}
 
 	/*
